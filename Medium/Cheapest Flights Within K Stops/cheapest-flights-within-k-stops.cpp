@@ -14,7 +14,8 @@ class Solution {
         vector<int> dis(n,1e9);
         
         priority_queue<pair<int,pair<int,int>>,vector<pair<int,pair<int,int>>>,greater<pair<int,pair<int,int>>>> pq;
-         //{stopage{price,node}}    stopage centric solution 
+         //{stopage{price,node}}    stopage centric solution  it can be solve without priority queue becouse increase in stopage is one at each step
+      //so it with automatically arrenge in ascending order from bottom to up
         pq.push({0,{0,src}});
         dis[src]=0;
         int min_price=1e9;
