@@ -9,19 +9,16 @@ using namespace std;
 class Solution{
 public:	
 	// calculate the maximum sum with out adjacent
-	int findMaxSum(int *arr, int n) {
+	int findMaxSum(vector<int>&arr, int n) {
 	    // code here
-	    //tabulation methods 
-	    
-	    int pre=arr[0],pre2=0;
+	    int pre=arr[0];
+	    int pre2=0;
 	    for(int i=1;i<n;i++){
-	        int take=arr[i]+pre2; // decide  to take in that case sec.last will be add to give sum up to i index
-	        int nottake=0+pre;   // decide not to take in that case last element will be take 
+	        int take=arr[i]+pre2;
+	        int nottake=0+pre;
 	        pre2=pre;
-	        pre=max(take,nottake);  // max of takeand nottake give ans to current i ;
-	        // now pre give the max sum that can be find till index i
+	        pre=max(take,nottake);
 	    }
-	    
 	    return pre;
 	}
 };
@@ -34,7 +31,7 @@ int main() {
     while (t--) {
         int n;
         cin >> n;
-        int arr[n];
+        vector<int>arr(n);
         for (int i = 0; i < n; i++) {
             cin >> arr[i];
         }
