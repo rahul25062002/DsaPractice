@@ -1,8 +1,10 @@
 //{ Driver Code Starts
+//Initial Template for C++
 // C program to find n'th Node in linked list
 #include <stdio.h>
 #include <stdlib.h>
 #include<iostream>
+#include <bits/stdc++.h>
 using namespace std;
 
 /* Link list Node */
@@ -22,6 +24,51 @@ int getNthFromLast(struct Node* head, int n);
 
 
 /* Driver program to test above function*/
+
+// } Driver Code Ends
+/* struct Node {
+  int data;
+  struct Node *next;
+  Node(int x) {
+    data = x;
+    next = NULL;
+  }
+};
+*/
+
+//Function to find the data of nth node from the end of a linked list.
+class Solution{
+public:
+    int getNthFromLast(Node *head, int n)
+    {
+           // Your code here
+          
+           int total=0;
+           Node *ph=head;
+           while(ph!=NULL){
+               total++;
+               ph=ph->next;
+           }
+        //   cout<<total<<endl;
+           if(n>total){ return -1;}
+           total-=n;
+           
+          
+           ph=head;
+           while(total){
+               total--;
+              
+               ph=ph->next;
+           }
+           return ph->data;
+           
+    }
+};
+
+
+
+//{ Driver Code Starts.
+
 int main()
 {
   int T,i,n,l,k;
@@ -42,41 +89,9 @@ int main()
             tail->next = new Node(l);
             tail = tail->next;
         }
-
-    cout<<getNthFromLast(head, k)<<endl;
+    Solution obj;
+    cout<<obj.getNthFromLast(head, k)<<endl;
     }
     return 0;
 }
 // } Driver Code Ends
-
-
-/* struct Node {
-  int data;
-  struct Node *next;
-  Node(int x) {
-    data = x;
-    next = NULL;
-  }
-};
-*/
-
-//Function to find the data of nth node from the end of a linked list.
-int getNthFromLast(Node *head, int n)
-{
-       // Your code here
-       int l=0;
-       if(head==NULL) return -1;
-       
-       Node *temp=head;
-       while(temp!=NULL){
-           l++;
-           temp=temp->next;
-       }
-      int i=l-n; if(i<0) return -1;
-       temp=head;
-       while(i--){
-           temp=temp->next;
-       }
-       return temp->data;
-}
-
