@@ -30,22 +30,40 @@ struct Node {
 */
 
 class Solution{
+    Node *reverseLinklist(Node *head){
+        Node *pre=NULL;
+        while(head!=NULL){
+            Node* nexts=head->next;
+            head->next=pre;
+            pre=head;
+            head=nexts;
+        }
+        return pre;
+    }
   public:
     //Function to check whether the list is palindrome.
     bool isPalindrome(Node *head)
     {
-        int curr=0,rev=0;
-        while(head!=NULL){
-            curr=curr*10+head->data;
-            head=head->next;
+        //Your code here
+        long long int sum1=0,sum2=0;
+        Node *temp=head;
+      
+        while(temp!=NULL){
+            sum1+=temp->data;
+
+            sum1*=10;
+            temp=temp->next;
         }
-        int temp=curr;
-        while(temp){
-            rev=rev*10 +temp%10;
-            temp/=10;
+          Node *head2=reverseLinklist(head);
+         while(head2!=NULL){
+            sum2+=head2->data;
+            sum2*=10;
+            head2=head2->next;
         }
-        if(curr==rev) return 1;
+        if(sum1==sum2) return 1;
+      
         return 0;
+        
     }
 };
 
