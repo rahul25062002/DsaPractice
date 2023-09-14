@@ -12,18 +12,22 @@ class Solution{
     long long maxSubarraySum(int arr[], int n){
         
         // Your code here
-             int current,sum=0,max_till_now=INT_MIN;
-        for(int i=0;i<n;i++){
-            current=arr[i];
-            sum+=current;
-            max_till_now=max(sum,max_till_now);
-            if(sum<0)
-              sum=0;
-        }
-        return max_till_now;
+        long long cur,sum=0,max_till=INT_MIN;
         
+        for(int i=0;i<n;i++){
+            cur=arr[i];
+            sum+=cur;
+            max_till=max(sum,max_till);
+            if(sum<0){
+                sum=0;
+            }
+        }
+        
+        return max_till;
     }
 };
+
+
 
 //{ Driver Code Starts.
 
