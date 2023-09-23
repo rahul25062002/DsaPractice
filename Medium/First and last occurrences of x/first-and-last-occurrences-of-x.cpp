@@ -8,22 +8,63 @@ class Solution
     public:
     vector<int> find(int arr[], int n , int x )
     {
-        // code here  
-        vector<int>ans;
-        if(arr[0] == x) ans.push_back(0);
-        for(int i = 1;i<n-1;i++){
-            if(arr[i] == x)
-            if(arr[i - 1] != arr[i] || arr[i] != arr[i+1]){
-                ans.push_back(i);
-            }
+        // code here 
+        
+        int s=0,l=n-1,m=(s+l)/2;
+        
+        int start=-1;int last=-1;
+        while(s<=l){
+          if(arr[m]==x){
+              if(start==-1){
+                  
+              if(m>0){
+              if(arr[m-1]==x) l=m;
+                   
+              else {
+                  start=m; s=m;l=n-1;
+              }
+              } else {start=m ; s=m;l=n-1;}
+              }else{
+                   if(m<n-1){
+              if(arr[m+1]==x) s=m+1;
+              else {
+                  last=m; break;
+              }
+                   
+              }else{ last=m; break;}
+              }
+          }
+          else if(arr[m]>x){
+              l=m-1;
+          }
+          else s=m+1;
+           
+          m=(s+l)/2;
         }
-        if(arr[n - 1] == x) ans.push_back(n - 1);
-        if(ans.size() == 1) ans.push_back(ans[0]);
-        if(ans.size() == 0)
-        return {-1,-1};
-        return ans;
+        // s=0;l=n-1,m=(s+l)/2;
+        //   while(s<=l){
+        //   if(arr[m]==x){
+        //       if(m<n-1){
+        //       if(arr[m+1]==x) s=m+1;
+        //       else {
+        //           last=m; break;
+        //       }
+                   
+        //       }else{ last=m; break;}
+        //   }
+        //   else if(arr[m]>x){
+        //       l=m;
+        //   }
+        //   else s=m+1;
+           
+        //   m=(s+l)/2;
+        // }
+       if(start!=-1 and last==-1) last=start;
+        // if(start==-1 and last!=-1) start=last;
+       return {start,last}; 
     }
 };
+
 
 //{ Driver Code Starts.
 
